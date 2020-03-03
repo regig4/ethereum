@@ -15,4 +15,4 @@ This repo contains smart contract implemented in Solidity and DApp written in An
 
 ## Troubleshooting
 
-In case of error empty list of companies try connecting to local blockchain with Metamask once again
+In case of error resulting in empty list of companies try connecting to local blockchain with Metamask once again
