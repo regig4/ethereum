@@ -1,0 +1,53 @@
+<div class="container d-flex justify-content-center">
+    <div class="row">
+        <div class="col card" style="width: 40rem;">
+            <div class="card-body">
+                <h2>Buy paper</h2><br />
+                <div class="form-group">
+                    <label for="comapany">Choose company:</label> <br />
+                    <mat-form-field style="width: 20em;">
+                        <mat-select [(ngModel)]="chosenCompany" (selectionChange)="companySelectionChanged()">
+                            <mat-option *ngFor="let item of companies" value="{{item.addr}}">{{item.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <label for="paper">Choose paper:</label> <br />
+                    <mat-form-field style="width: 20em;">
+                        <mat-select [(ngModel)]="chosenPaperId" (selectionChange)="paperSelectionChanged()">
+                            <mat-option *ngFor="let item of papers" value="{{item.id}}">Paper id: {{item.id}} - Price:
+                                {{item.price}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div style="margin-bottom: 1.2em;" *ngIf="chosenPaperId" class="alert alert-info">
+                    Current owner's address: <br /><strong>{{chosenPaper.owner}}</strong><br />
+                    My balance: <br /><strong>♦ {{balance}} (Ether)</strong></div>
+                <div class="form-group">
+                    <div *ngIf="error" class="alert alert-danger">
+                        {{error}}
+                    </div>
+                    <button [disabled]="!chosenPaperId" (click)="send()" class="btn btn-primary float-right">
+                        Buy
+                    </button>
+                </div>
+
+
+               
+            </div>
+        </div>
+
+        <div class="col card" *ngIf="transactions.length">
+            <div class="card-body">
+
+            <h2>Ledger</h2>
+            <div class="alert alert-warning" *ngFor="let item of transactions">
+                from: <span style="float: right;"><strong>{{item.from}}</strong></span><br />
+                to: <span style="float: right;"><strong>{{item.to}}</strong></span><br />
+                value: <span style="float: right;"><strong>{{item.value}} Wei</strong></span>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
