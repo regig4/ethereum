@@ -172,7 +172,7 @@ contract Investment {
         }
 
         emit TransactionOccured(msg.sender, paper.owner, msg.value);
-        paper.owner.transfer(msg.value);    // jak dam msg.sender.transfer() to działa 
+        paper.owner.transfer(msg.value);
         paper.owner = address(uint160(msg.sender));
     }
 }
